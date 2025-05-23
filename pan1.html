@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PAN Card</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            width: 380px;
+            padding: 30px 25px;
+        }
+        .card h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            font-size: 14px;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 6px;
+            color: #444;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+        button {
+            width: 100%;
+            background-color: #0078d7;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        button:hover {
+            background-color: #005fa3;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: #005fa3;
+            letter-spacing: 2px;
+        }
+    </style>
+    <script>
+        function generatePAN() {
+            var v1 = document.getElementById("name").value;
+            var v2 = document.getElementById("father").value;
+            var v3 = document.getElementById("mother").value;
+            var v4 = document.getElementById("aadhar").value;
+
+            var result = "";
+            result += v1.length >= 4 ? v1.substring(0, 4) : v1;
+            result += v2 ? v2.charAt(v2.length - 1) : '';
+            result += v3 ? v3.charAt(v3.length - 1) : '';
+            result += v4.length >= 12 ? v4.slice(8, 12) : '';
+
+            document.getElementById("output").textContent = result.toUpperCase();
+        }
+    </script>
+</head>
+<body>
+    <div class="card">
+        <h2>PAN Card</h2>
+        <div class="form-group">
+            <label for="name">Candidate Name</label>
+            <input type="text" id="name">
+        </div>
+        <div class="form-group">
+            <label for="father">Father's Name</label>
+            <input type="text" id="father">
+        </div>
+        <div class="form-group">
+            <label for="mother">Mother's Name</label>
+            <input type="text" id="mother">
+        </div>
+        <div class="form-group">
+            <label for="aadhar">Aadhar Number</label>
+            <input type="text" id="aadhar">
+        </div>
+        <button onclick="generatePAN()">Generate PAN Code</button>
+        <div id="output" class="result"></div>
+    </div>
+</body>
+</html>
