@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Styled PAN Card Generator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .pan-card {
+            background: #fff;
+            width: 400px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            padding: 25px 30px;
+            text-align: center;
+        }
+        .pan-card img {
+            width: 120px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #004080;
+            font-weight: bold;
+            font-size: 24px;
+        }
+        label {
+            display: block;
+            margin: 12px 0 6px 0;
+            font-weight: 600;
+            color: #333;
+            text-align: left;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1.5px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        input[type="text"]:focus {
+            border-color: #004080;
+            outline: none;
+        }
+        button {
+            margin-top: 25px;
+            width: 100%;
+            padding: 14px;
+            background-color: #004080;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #002f5a;
+        }
+        .result {
+            margin-top: 30px;
+            font-size: 26px;
+            font-weight: 700;
+            color: #004080;
+            letter-spacing: 4px;
+            user-select: all;
+        }
+    </style>
+    <script>
+        function generatePAN() {
+            const name = document.getElementById('name').value.trim();
+            const father = document.getElementById('father').value.trim();
+            const mother = document.getElementById('mother').value.trim();
+            const aadhar = document.getElementById('aadhar').value.trim();
+
+            let pan = '';
+            pan += name.length >= 4 ? name.substring(0, 4) : name;
+            pan += father.length > 0 ? father.charAt(father.length - 1) : '';
+            pan += mother.length > 0 ? mother.charAt(mother.length - 1) : '';
+            pan += aadhar.length >= 12 ? aadhar.slice(8, 12) : '';
+
+            document.getElementById('output').textContent = pan.toUpperCase();
+        }
+    </script>
+</head>
+<body>
+    <div class="pan-card">
+        <img src="image.png" alt="PAN Card Sample" />
+        <h2>PAN Card Generator</h2>
+        <label for="name">Candidate Name</label>
+        <input type="text" id="name" placeholder="e.g., Anil Kumar" />
+        <label for="father">Father's Name</label>
+        <input type="text" id="father" placeholder="e.g., Ramesh Kumar" />
+        <label for="mother">Mother's Name</label>
+        <input type="text" id="mother" placeholder="e.g., Sunita Devi" />
+        <label for="aadhar">Aadhar Number</label>
+        <input type="text" id="aadhar" placeholder="12-digit Aadhar Number" />
+        <button onclick="generatePAN()">Generate PAN Code</button>
+        <div id="output" class="result"></div>
+    </div>
+</body>
+</html>
