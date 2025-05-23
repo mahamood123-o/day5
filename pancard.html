@@ -1,0 +1,102 @@
+<html>
+    <head>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background: linear-gradient(135deg, #004080, #00aaff);
+                color: white;
+                padding: 20px;
+            }
+            .pan-container {
+                background: rgba(0, 0, 0, 0.6);
+                padding: 20px;
+                border-radius: 10px;
+                max-width: 400px;
+                margin: auto;
+                box-shadow: 0 0 15px rgba(0,0,0,0.5);
+            }
+            .pan-container img {
+                display: block;
+                margin: 0 auto 20px auto;
+                width: 100px;
+                border-radius: 10px;
+            }
+            label {
+                display: block;
+                margin-top: 10px;
+                font-weight: bold;
+            }
+            input[type="text"] {
+                width: 100%;
+                padding: 8px;
+                margin-top: 5px;
+                border-radius: 5px;
+                border: none;
+                font-size: 16px;
+            }
+            button {
+                margin-top: 20px;
+                width: 100%;
+                padding: 12px;
+                background-color: #003060;
+                border: none;
+                border-radius: 5px;
+                color: white;
+                font-size: 18px;
+                cursor: pointer;
+            }
+            button:hover {
+                background-color: #001f40;
+            }
+            #p {
+                margin-top: 25px;
+                font-size: 24px;
+                font-weight: bold;
+                text-align: center;
+                color: #ffcc00;
+                letter-spacing: 3px;
+            }
+        </style>
+        <script>
+            function a(){
+                var v1=document.getElementById("a").value;
+                var v2=document.getElementById("b").value;
+                var v3=document.getElementById("c").value;
+                var v4=document.getElementById("d").value;
+                // Fix the original logic with correct string methods
+                var v5 = "";
+                if(v1.length >= 4) {
+                    v5 += v1.substring(0,4);
+                } else {
+                    v5 += v1;
+                }
+                if(v2.length > 0) {
+                    v5 += v2.charAt(v2.length-1);
+                }
+                if(v3.length > 0) {
+                    v5 += v3.charAt(v3.length-1);
+                }
+                if(v4.length >= 12) {
+                    v5 += v4.slice(8,12);
+                }
+                document.getElementById("p").innerHTML = v5;
+            }
+        </script>
+    </head>
+    <body>
+        <div class="pan-container">
+            <img src="image.png" alt="PAN Card Image" />
+            <h1>Enter value to reverse</h1>
+            <label for="a">Enter Candidate Name:</label>
+            <input type="text" id="a" />
+            <label for="b">Enter Father Name:</label>
+            <input type="text" id="b" />
+            <label for="c">Enter Mother Name:</label>
+            <input type="text" id="c" />
+            <label for="d">Enter Aadhar Number:</label>
+            <input type="text" id="d" />
+            <button onclick="a()">Click me</button>
+            <h1 id="p"></h1>
+        </div>
+    </body>
+</html>
